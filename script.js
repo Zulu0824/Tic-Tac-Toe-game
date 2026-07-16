@@ -18,4 +18,10 @@ const winCondition = [
 const gameBoard = (() => {
     const board = Array(9).fill("");
     const getBoard = () => board;
+
+    const placeMark = (index, mark) => {
+        if(board[index] = "") return false;
+        board[index] = mark;
+        return true;
+    };
 })
