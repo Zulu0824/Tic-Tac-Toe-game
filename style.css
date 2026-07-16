@@ -16,6 +16,7 @@ body {
 
     display: grid;
     grid-template-rows: 150px 1fr;
+    position: relative;
 }
 
 #header-section {
@@ -51,4 +52,14 @@ body {
     height: 100px;
     width: 500px;
     background-color: darkcyan;
+}
+
+#player-info-dialog[open] {
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+}
+
+#player-info-dialog::backdrop {
+    backdrop-filter: blur(2px);
 }

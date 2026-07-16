@@ -137,7 +137,7 @@ const cancel = document.getElementById("cancel-button");
 container.addEventListener("click", (e) => {
     const id = e.target.id; 
 
-    if(id === "name-game-button") {
+    if(id === "new-game-button") {
         dialog.showModal();
     } else if(id === "reset-button") {
         game.resetGame();
