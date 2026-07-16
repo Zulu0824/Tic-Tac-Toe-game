@@ -43,4 +43,12 @@ const gameBoard = (() => {
         }
         return true;
     };
+
+    const reset = () => {
+        for(let i = 0; i < board.length; i++) {
+            board[i] = "";
+        }
+    };
+
+    
 })
