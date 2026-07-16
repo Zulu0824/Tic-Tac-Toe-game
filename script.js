@@ -101,4 +101,31 @@ const game = (() => {
         renderBoard();
     }
     return {resetGame, endGame, isGameOver, getCurrentPlayer, switchTurn};
+
 })();
+
+gridBox.addEventListener("click", (e) => {
+    if(game.isGameOver()) return;
+    if(!e.target.classList.contains("grid-item")) return;
+
+    const index = e.target.dataset.cellIndex;
+    const currentMark = game.getCurrentPlayer().getMark;
+    const placed = gameBoard.placeMark(index, currentMark);
+
+    if(!placed) return;
+
+    renderBoard();
+
+    if(gameBoard.checkWin(currentMark)) {
+        statusText.textContent = currentMark + "Wins";
+        game.endGame();
+        return;
+    }
+
+    if(gameBoard.checkTie()) {
+        statusText.textContent = "It's a Tie";
+        game.endGame();
+        return;
+    }
+    game.switchTurn();
+});
