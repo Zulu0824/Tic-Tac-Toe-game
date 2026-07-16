@@ -98,6 +98,20 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     font-family: "Schoolbell";
+    background-color: #f4e9d8;
+    color: #213f37;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#button-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+#button-box button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
 #header-section {
