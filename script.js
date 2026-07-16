@@ -145,3 +145,16 @@ container.addEventListener("click", (e) => {
         dialog.close();
     }
 });
+
+container.addEventListener("submit", (e) => {
+    if (e.target.id === "player-info-form") {
+        e.preventDefault();
+
+        const name1 = document.getElementById("player_one_name").value.trim();
+        const name2 = document.getElementById("player_two_name").value.trim();
+
+        game.setPlayers(name1, name2);
+        game.resetGame();
+        dialog.close();
+    }
+});
