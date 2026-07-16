@@ -35,4 +35,12 @@ const gameBoard = (() => {
         } return false;
     };
 
+    const checkTie = () => {
+        for (let i = 0; i < board.length; i++) {
+            if(board[i] === "") {
+                return false;
+            }
+        }
+        return true;
+    };
 })
