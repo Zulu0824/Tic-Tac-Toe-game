@@ -67,3 +67,22 @@ const renderBoard = () => {
 };
 
 renderBoard();
+
+let statusText = document.getElementById("status-text");
+statusText.textContent = "It's Player One's (X) Turn";
+const game = (() => {
+    const player1 = playerInfo("Player One" , "X");
+    const player2 = playerInfo("Player Two", "O");
+
+    let currentPlayer = player1;
+
+    const switchTurn = () => {
+        if(currentPlayer === player1) {
+            currentPlayer = player2;
+            statusText.textContent = "It's Player Two's (O) Turn";
+        } else {
+            currentPlayer = player1;
+            statusText.textContent = "It's Player One's (X) Turn";
+        }
+    };
+})
