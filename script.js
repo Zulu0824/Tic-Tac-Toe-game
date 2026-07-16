@@ -54,6 +54,7 @@ const gameBoard = (() => {
 })();
 
 const gridBox = document.getElementById("grid-container");
+const statusText = document.getElementById("status-text");
 
 const renderBoard = () => {
     gridBox.textContent = "";
@@ -61,30 +62,32 @@ const renderBoard = () => {
         const cellDiv = document.createElement("div");
         cellDiv.classList.add("grid-item");
         cellDiv.dataset.cellIndex = index;
+        cellDiv.dataset.mark = cellValue;
         cellDiv.textContent = cellValue;
         gridBox.appendChild(cellDiv);
     });
 };
 
-renderBoard();
-
-let statusText = document.getElementById("status-text");
-statusText.textContent = "It's Player One's (X) Turn";
 const game = (() => {
-    const player1 = playerInfo("Player One" , "X");
-    const player2 = playerInfo("Player Two", "O");
-
+    let player1 = playerInfo("Player One", "X");
+    let player2 = playerInfo("Player Two", "O");
     let currentPlayer = player1;
+
     const getCurrentPlayer = () => currentPlayer;
 
+    const setPlayers = (name1, name2) => {
+        player1 = playerInfo(name1 || "Player One", "X");
+        player2 = playerInfo(name2 || "Player Two", "O");
+        currentPlayer = player1;
+    };
+
+    const updateStatusText = () => {
+        statusText.textContent = `It's ${currentPlayer.getName()}'s (${currentPlayer.getMark()}) Turn`;
+    };
+
     const switchTurn = () => {
-        if(currentPlayer === player1) {
-            currentPlayer = player2;
-            statusText.textContent = "It's Player Two's (O) Turn";
-        } else {
-            currentPlayer = player1;
-            statusText.textContent = "It's Player One's (X) Turn";
-        }
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+        updateStatusText();
     };
 
     let gameOver = false;
@@ -96,20 +99,24 @@ const game = (() => {
     const resetGame = () => {
         gameBoard.reset();
         currentPlayer = player1;
-        statusText.textContent = "It's Player One's (X) Turn";
         gameOver = false;
+        updateStatusText();
         renderBoard();
-    }
-    return {resetGame, endGame, isGameOver, getCurrentPlayer, switchTurn};
+    };
 
+    return {resetGame, endGame, isGameOver, getCurrentPlayer, switchTurn, setPlayers, updateStatusText};
 })();
+
+renderBoard();
+game.updateStatusText();
 
 gridBox.addEventListener("click", (e) => {
     if(game.isGameOver()) return;
     if(!e.target.classList.contains("grid-item")) return;
 
     const index = e.target.dataset.cellIndex;
-    const currentMark = game.getCurrentPlayer().getMark();
+    const currentPlayer = game.getCurrentPlayer();
+    const currentMark = currentPlayer.getMark();
     const placed = gameBoard.placeMark(index, currentMark);
 
     if(!placed) return;
@@ -117,7 +124,7 @@ gridBox.addEventListener("click", (e) => {
     renderBoard();
 
     if(gameBoard.checkWin(currentMark)) {
-        statusText.textContent = currentMark + " Wins";
+        statusText.textContent = `${currentPlayer.getName()} Wins!`;
         game.endGame();
         return;
     }
@@ -132,18 +139,16 @@ gridBox.addEventListener("click", (e) => {
 
 const container = document.getElementById("container");
 const dialog = document.getElementById("player-info-dialog");
-const cancel = document.getElementById("cancel-button");
+
+const clickHandlers = {
+    "new-game-button": () => dialog.showModal(),
+    "reset-button": () => game.resetGame(),
+    "cancel-button": () => dialog.close(),
+};
 
 container.addEventListener("click", (e) => {
-    const id = e.target.id; 
-
-    if(id === "new-game-button") {
-        dialog.showModal();
-    } else if(id === "reset-button") {
-        game.resetGame();
-    } else if(id === "cancel-button") {
-        dialog.close();
-    }
+    const handler = clickHandlers[e.target.id];
+    if (handler) handler();
 });
 
 container.addEventListener("submit", (e) => {
