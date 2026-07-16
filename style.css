@@ -26,10 +26,8 @@ body {
 #content-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 100px;
     align-items: center;
-
 }
 
 #grid-container {
@@ -44,14 +42,20 @@ body {
     width: 150px;
     background-color: lightcoral;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 4rem;
     border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #status-text {
-    height: 100px;
+    /* height: 50px;
     width: 500px;
-    background-color: darkcyan;
+    background-color: darkcyan; */
+    margin-top: 50px;
+    font-size: 2.5rem;
+    text-align: center;
 }
 
 #player-info-dialog[open] {
