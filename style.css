@@ -25,7 +25,8 @@ body {
 #content-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 100px;
     align-items: center;
 
 }
@@ -41,4 +42,13 @@ body {
     height: 150px;
     width: 150px;
     background-color: lightcoral;
+    cursor: pointer;
+    font-size: 2rem;
+    border: 2px solid black;
+}
+
+#status-text {
+    height: 100px;
+    width: 500px;
+    background-color: darkcyan;
 }
