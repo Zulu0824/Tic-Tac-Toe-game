@@ -14,3 +14,8 @@ const winCondition = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+
+const gameBoard = (() => {
+    const board = Array(9).fill("");
+    const getBoard = () => board;
+})
