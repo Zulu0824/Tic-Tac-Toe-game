@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="header-section"></div>
+        <div id="content-section">
+            <div id="game-container"></div>
+            <div id="status-text"></div>
+            <div id="button-box"></div>
+        </div>
+        <dialog id="player-info-dialog">
+            <form action="" method="post" id="player-info-form">
+                <div class="form-item">
+                    <label for="player_one_name">Player One (X)</label>
+                    <input type="text" name="player_one_name" id="player_one_name" required>
+                </div>
+                <div class="form-item">
+                    <label for="player_two_name">Player Two (O)</label>
+                    <input type="text" name="player_two_name" id="player_two_name" required>
+                </div>
+                <div id="form-button-box">
+                    <button type="submit" id="submit-btn">Start Game</button>
+                    <button type="button" id="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
+</body>
+</html>
