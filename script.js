@@ -85,4 +85,10 @@ const game = (() => {
             statusText.textContent = "It's Player One's (X) Turn";
         }
     };
+
+    let gameOver = false;
+    const isGameOver = () => gameOver;
+    const endGame = () => {
+        gameOver = true;
+    };
 })
