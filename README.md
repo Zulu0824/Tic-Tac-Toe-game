@@ -1,4 +1,4 @@
-# Tic-Tac-Toe-game
+# Tic-Tac-Toe 
 ---
 This game is a project which is a part of "The Odin Project" javascript path.
 
