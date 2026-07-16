@@ -24,4 +24,15 @@ const gameBoard = (() => {
         board[index] = mark;
         return true;
     };
+
+    const checkWin = (mark) => {
+        for (let i = 0; i < winCondition.length; i++) {
+            const condition = winCondition[i];
+
+            if(board[condition[0]] === mark && board[condition[1]] === mark && board[condition[2]] === mark) {
+                return true;
+            }
+        } return false;
+    };
+
 })
