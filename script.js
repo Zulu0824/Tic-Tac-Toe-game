@@ -109,7 +109,7 @@ gridBox.addEventListener("click", (e) => {
     if(!e.target.classList.contains("grid-item")) return;
 
     const index = e.target.dataset.cellIndex;
-    const currentMark = game.getCurrentPlayer().getMark;
+    const currentMark = game.getCurrentPlayer().getMark();
     const placed = gameBoard.placeMark(index, currentMark);
 
     if(!placed) return;
@@ -117,7 +117,7 @@ gridBox.addEventListener("click", (e) => {
     renderBoard();
 
     if(gameBoard.checkWin(currentMark)) {
-        statusText.textContent = currentMark + "Wins";
+        statusText.textContent = currentMark + " Wins";
         game.endGame();
         return;
     }
@@ -128,4 +128,10 @@ gridBox.addEventListener("click", (e) => {
         return;
     }
     game.switchTurn();
+});
+
+const resetButton = document.getElementById("reset-button");
+
+resetButton.addEventListener("click", () => {
+    game.resetGame();
 });
