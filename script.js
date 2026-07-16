@@ -52,3 +52,18 @@ const gameBoard = (() => {
     
     return {reset, checkTie, getBoard, placeMark, checkWin}
 })();
+
+const gridBox = document.getElementById("grid-container");
+
+const renderBoard = () => {
+    gridBox.textContent = "";
+    gameBoard.getBoard().forEach((cellValue, index) => {
+        const cellDiv = document.createElement("div");
+        cellDiv.classList.add("grid-item");
+        cellDiv.dataset.cellIndex = index;
+        cellDiv.textContent = cellValue;
+        gridBox.appendChild(cellDiv);
+    });
+};
+
+renderBoard();
