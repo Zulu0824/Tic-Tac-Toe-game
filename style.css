@@ -21,3 +21,8 @@ body {
 #header-section {
     background-color: lightblue;
 }
+
+#content-section {
+    display: flex;
+    flex-direction: column;
+}
