@@ -49,6 +49,6 @@ const gameBoard = (() => {
             board[i] = "";
         }
     };
-
     
-})
+    return {reset, checkTie, getBoard, placeMark, checkWin}
+})();
