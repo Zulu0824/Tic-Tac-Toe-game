@@ -130,3 +130,121 @@ body {
     width: 65px;
     fill: white;
 }
+
+#player-info-dialog {
+    background-color: #f4e9d8;
+    border: none;
+    border-radius: 20px;
+    padding: 40px;
+    width: 400px;
+    max-width: 90vw;
+    font-family: "Playpen Sans";
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Entry animation when the dialog opens */
+#player-info-dialog[open] {
+    animation: dialog-in 0.25s ease-out;
+}
+
+@keyframes dialog-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+#player-info-dialog::backdrop {
+    backdrop-filter: blur(4px);
+    background-color: rgba(26, 51, 44, 0.4);
+}
+
+/* A little title feel above the form, if you want to add a <h2> */
+#player-info-dialog h2 {
+    color: #213f37;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#player-info-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.form-item label {
+    color: #213f37;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.form-item input {
+    padding: 12px 14px;
+    border: 2px solid #213f37;
+    border-radius: 10px;
+    font-family: "Playpen Sans";
+    font-size: 1.1rem;
+    background-color: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-item input:focus {
+    outline: none;
+    border-color: #ffb347;
+    box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.25);
+}
+
+
+#form-button-box {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#form-button-box button {
+    padding: 10px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: "Schoolbell";
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#submit-button {
+    background-color: #213f37;
+    color: #f4e9d8;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+#submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+#submit-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+#cancel-button {
+    background-color: transparent;
+    color: #213f37;
+    border: 2px solid #213f37;
+}
+
+#cancel-button:hover {
+    background-color: rgba(33, 63, 55, 0.08);
+}
