@@ -20,7 +20,7 @@ const gameBoard = (() => {
     const getBoard = () => board;
 
     const placeMark = (index, mark) => {
-        if(board[index] = "") return false;
+        if(board[index] !== "") return false;
         board[index] = mark;
         return true;
     };
@@ -130,8 +130,18 @@ gridBox.addEventListener("click", (e) => {
     game.switchTurn();
 });
 
-const resetButton = document.getElementById("reset-button");
+const container = document.getElementById("container");
+const dialog = document.getElementById("player-info-dialog");
+const cancel = document.getElementById("cancel-button");
 
-resetButton.addEventListener("click", () => {
-    game.resetGame();
+container.addEventListener("click", (e) => {
+    const id = e.target.id; 
+
+    if(id === "name-game-button") {
+        dialog.showModal();
+    } else if(id === "reset-button") {
+        game.resetGame();
+    } else if(id === "cancel-button") {
+        dialog.close();
+    }
 });
