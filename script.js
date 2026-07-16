@@ -75,6 +75,7 @@ const game = (() => {
     const player2 = playerInfo("Player Two", "O");
 
     let currentPlayer = player1;
+    const getCurrentPlayer = () => currentPlayer;
 
     const switchTurn = () => {
         if(currentPlayer === player1) {
@@ -91,4 +92,13 @@ const game = (() => {
     const endGame = () => {
         gameOver = true;
     };
-})
+
+    const resetGame = () => {
+        gameBoard.reset();
+        currentPlayer = player1;
+        statusText.textContent = "It's Player One's (X) Turn";
+        gameOver = false;
+        renderBoard();
+    }
+    return {resetGame, endGame, isGameOver, getCurrentPlayer, switchTurn};
+})();
